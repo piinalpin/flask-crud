@@ -47,7 +47,7 @@ pip install flask sqlalchemy flask-sqlalchemy
 from app import app
 app.run(debug=True, host='127.0.0.1', port=5000)
 ```
-5. Create `controller.py` according the abpove structure (flask-crud/app/module/)
+5. Create `controller.py` according the abpove structure `flask-crud/app/module/`
 ```python
 from flask import render_template, request
 from app import app
@@ -56,7 +56,7 @@ from app import app
 def index():
   return "My CRUD Flask App"
 ```
-6. Create `__init__.py` inside app directory according the above structure (flask-crud/app/)
+6. Create `__init__.py` inside app directory according the above structure `flask-crud/app/`
 ```python
 from flask import Flask
 
@@ -102,10 +102,19 @@ python run.py
 </body>
 </html>
 ```
+11. Change `return "My CRUD Flask App"` in `controller.py` to `return render_template("home.html")` 
+```python
+from flask import render_template, request
+from app import app
+
+@app.route('/')
+def index():
+  return render_template("home.html")
+```
+
 ![Sample 2](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-2.PNG)
 
-
-
+12. 
 
 ### Installing
 
