@@ -71,7 +71,6 @@ python run.py
 9. Access `localhost:5000` according port that created in `run.py`
 
 ![Sample 1](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-1.PNG)
-
 10. Create an input form called `home.html` inside `templates` directory according the above structure
 ```html
 <!DOCTYPE html>
@@ -122,7 +121,8 @@ def index():
         print(request.form)
     return render_template("home.html")
 ```
-
+![Sample 3](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-3.PNG)
+![Sample 4](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-4.PNG)
 
 ### Installing
 
