@@ -165,7 +165,7 @@ Mahasiswa  |
 
 16. Stop app if that is still running, press `CTRL+C` key to quit and type `python` to go to python terminal
 
-![Sample 4](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-5.PNG)
+![Sample 5](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-5.PNG)
 
 17. Type command bellow to create database file `flaskcrud.db`
 ```
@@ -253,6 +253,8 @@ def index():
 </body>
 </html>
 ```
+![Sample 6](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-6.PNG)
+
 22. Then modify `home.html` to add action button that will __UPDATE__ and __DELETE__ data from database using id from collection. On `href="form-update/{{ x.id }}"` it will be route to `/form-update/1` to GET parameters.
 ```html
 <!DOCTYPE html>
@@ -301,7 +303,42 @@ def index():
 </body>
 </html>
 ```
-23. Then create function to __UPDATE__ data from the collections in `controller.py`, on __UPDATE__ you should create two function to load or render form input and update to database from method __POST__ on form input using `Mahasiswa.query.filter_by(id=id).first()` to find data filter by id and `db.session.commit()` to save the data
+![Sample 7](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-7.PNG)
+
+23. Then create `form-update.html` for the input form on update
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Crud</title>
+</head>
+<body>
+<h3>Form Update Mahasiswa</h3>
+<form action="/form-update" method="POST">
+    <table>
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td><input type="text" name="name" value="{{ data.name }}"></td>
+            <input type="hidden" name="id" value="{{ data.id }}">
+        </tr>
+        <tr>
+            <td>Nomor Induk Mahasiswa</td>
+            <td>:</td>
+            <td><input type="text" name="nim" value="{{ data.nim }}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Update</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+```
+![Sample 8](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-8.PNG)
+
+24. Then create function to __UPDATE__ data from the collections in `controller.py`, on __UPDATE__ you should create two function to load or render form input and update to database from method __POST__ on form input using `Mahasiswa.query.filter_by(id=id).first()` to find data filter by id and `db.session.commit()` to save the data
 ```python
 @app.route('/form-update/<int:id>')
 def updateForm(id):
@@ -325,7 +362,7 @@ def update():
         return redirect("/")
 ```
 
-24. Then create the __DELETE__ function to delete data from the collections in `controller.py` using filter by id and `db.session.delete(mhs)` function
+25. Then create the __DELETE__ function to delete data from the collections in `controller.py` using filter by id and `db.session.delete(mhs)` function
 ``python
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -339,80 +376,38 @@ def delete(id):
     return redirect("/")
 ```
 
-
-
-
-
-
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+### After change structure of flask project
 ```
-Give the example
+* flask-project/
+  |--- app/
+  |    |--- module/
+  |    |    |--- __init__.py
+  |    |    |--- controller.py
+  |    |    |--- models.py
+  |    |--- templates/
+  |    |    |--- form-update.html
+  |    |    |--- home.html
+  |    |--- __init__.py
+  |    |--- flaskcrud.db
+  |--- venv/
+  |--- run.py
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python 3](https://www.python.org/download/releases/3.0/) - The language programming used
+* [Flask](http://flask.pocoo.org/) - The web framework used
+* [Virtualenv](https://virtualenv.pypa.io/en/latest/) - The virtual environment used
+* [SQL Alchemy](https://www.sqlalchemy.org/) - The database library
+* [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/2.3/) - Flask and SQL Alchemy connector
 
-## Contributing
+## Clone or Download
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+You can clone or download this project
+```
+> Clone : git clone https://github.com/piinalpin/flask-crud.git
+```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Alvinditya Saputra** - *Initial work* - [DSS Consulting](https://dssconsulting.id/) - [LinkedIn](https://linkedin.com/in/piinalpin) [Instagram](https://www.instagram.com/piinalpin) [Twitter](https://www.twitter.com/piinalpin)
