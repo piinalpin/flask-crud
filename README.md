@@ -156,16 +156,12 @@ class Mahasiswa(db.Model):
 ```
 
 15. The structure of database should like as follows
-|                 Mahasiswa                   |
-| ------------- |
-|  id (Integer, PK, Autoincrement, NOT NULL)  |
-|  name (String, NOT NULL)                    |
-|  nim (String, NOT NULL)                     |
 
-| First Header  |
-| ------------- |
-| Content Cell  |
-| Content Cell  |
+Mahasiswa  |
+------------- |
+`id (Integer, PK, Autoincrement, NOT NULL)`  |
+`name (String, NOT NULL)`  |
+`nim (String, NOT NULL)`  |
 16.
 
 
