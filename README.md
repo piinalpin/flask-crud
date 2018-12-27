@@ -72,8 +72,37 @@ python run.py
 
 ![Sample 1](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-1.PNG)
 
-
-
+10. Create an input form called `home.html` inside `templates` directory according the above structure
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Crud</title>
+</head>
+<body>
+<h3>Form Add Mahasiswa</h3>
+<form action="/" method="POST">
+    <table>
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Nomor Induk Mahasiswa</td>
+            <td>:</td>
+            <td><input type="text" name="nim"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+```
+![Sample 2](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-2.PNG)
 
 
 
