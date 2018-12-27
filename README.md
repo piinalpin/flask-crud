@@ -69,6 +69,7 @@ from app.module.controller import *
 python run.py
 ```
 9. Access `localhost:5000` according port that created in `run.py`
+
 ![Sample 1](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-1.PNG)
 
 
