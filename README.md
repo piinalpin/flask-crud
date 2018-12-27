@@ -71,6 +71,7 @@ python run.py
 9. Access `localhost:5000` according port that created in `run.py`
 
 ![Sample 1](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-1.PNG)
+
 10. Create an input form called `home.html` inside `templates` directory according the above structure
 ```html
 <!DOCTYPE html>
@@ -123,6 +124,52 @@ def index():
 ```
 ![Sample 3](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-3.PNG)
 ![Sample 4](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-4.PNG)
+
+13. Configure the database with SQLAlchemy, you should modify `__init__.py` and it will be created `flaskcrud.db` inside `app` directory
+```python
+import os
+from flask import Flask
+
+project_dir = os.path.dirname(os.path.abspath(__file__))
+database_file = "sqlite:///{}".format(os.path.join(project_dir, "flaskcrud.db"))
+
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = database_file
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
+
+from app.module.controller import *
+```
+14. Define model to application, you should create `models.py` file inside `module` directory according the above structure.
+```python
+from flask_sqlalchemy import SQLAlchemy
+from app import app
+
+db = SQLAlchemy(app)
+
+class Mahasiswa(db.Model):
+    id = db.Column(db.Integer, unique=True, primary_key=True, nullable=False)
+    nim = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return "<Name: {}>".format(self.name)
+```
+
+15. The structure of database should like as follows
+|                 Mahasiswa                   |
+| ------------------------------------------- |
+|  id (Integer, PK, Autoincrement, NOT NULL)  |
+|  name (String, NOT NULL)                    |
+|  nim (String, NOT NULL)                     |
+
+16.
+
+
+
+
+
+
+
 
 ### Installing
 
