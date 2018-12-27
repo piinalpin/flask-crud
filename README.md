@@ -14,12 +14,10 @@ Make sure you have installed Python 3 on your device
 ```
 * flask-project/
   |--- app/
-  |    |--- db/
   |    |--- module/
   |    |    |--- __init__.py
   |    |    |--- controller.py
   |    |    |--- models.py
-  |    |--- static/ (css, javascript, dist bootstrap)
   |    |--- templates/ (html file)
   |    |--- __init__.py
   |--- venv/
@@ -71,6 +69,8 @@ from app.module.controller import *
 python run.py
 ```
 9. Access `localhost:5000` according port that created in `run.py`
+![Sample 1](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-1.PNG)
+
 
 
 
