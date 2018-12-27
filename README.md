@@ -187,7 +187,8 @@ Mahasiswa  |
   |--- venv/
   |--- run.py
 ```
-19. Modify `controller.py` to create function to storing data of `Mahasiswa` then save to the database that is already made and retrieving data with `Mahasiswa.query.all()` it will be retrieving all data from database then made with `try` and `except` to handling an error
+19. Import database from `models.py` add this line `from .models import db, Mahasiswa` to the `controller.py`, it's mean import from `models.py` for `db` variable and class `Mahasiswa`
+20. Modify `controller.py` to create function to storing data of `Mahasiswa` then save to the database that is already made and retrieving data with `Mahasiswa.query.all()` it will be retrieving all data from database then made with `try` and `except` to handling an error
 ```python
 @app.route('/', methods=['GET','POST'])
 def index():
@@ -205,9 +206,9 @@ def index():
     print(listMhs)
     return render_template("home.html", data=enumerate(listMhs,1))
 ```
-20. The statement of `data=enumerate(listMhs,1)` mean data will show from 1 and so on, not from the id
+21. The statement of `data=enumerate(listMhs,1)` mean data will show from 1 and so on, not from the id
 
-21. Then modify `home.html` file to show that data is already inputed on database from input form
+22. Then modify `home.html` file to show that data is already inputed on database from input form
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -255,7 +256,7 @@ def index():
 ```
 ![Sample 6](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-6.PNG)
 
-22. Then modify `home.html` to add action button that will __UPDATE__ and __DELETE__ data from database using id from collection. On `href="form-update/{{ x.id }}"` it will be route to `/form-update/1` to GET parameters.
+23. Then modify `home.html` to add action button that will __UPDATE__ and __DELETE__ data from database using id from collection. On `href="form-update/{{ x.id }}"` it will be route to `/form-update/1` to GET parameters.
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -305,7 +306,7 @@ def index():
 ```
 ![Sample 7](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-7.PNG)
 
-23. Then create `form-update.html` for the input form on update
+24. Then create `form-update.html` for the input form on update
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -338,7 +339,7 @@ def index():
 ```
 ![Sample 8](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-8.PNG)
 
-24. Then create function to __UPDATE__ data from the collections in `controller.py`, on __UPDATE__ you should create two function to load or render form input and update to database from method __POST__ on form input using `Mahasiswa.query.filter_by(id=id).first()` to find data filter by id and `db.session.commit()` to save the data
+25. Then create function to __UPDATE__ data from the collections in `controller.py`, on __UPDATE__ you should create two function to load or render form input and update to database from method __POST__ on form input using `Mahasiswa.query.filter_by(id=id).first()` to find data filter by id and `db.session.commit()` to save the data
 ```python
 @app.route('/form-update/<int:id>')
 def updateForm(id):
@@ -361,8 +362,9 @@ def update():
             print(e)
         return redirect("/")
 ```
+26. And modify import flask on top line change to `from flask import render_template, request, redirect`
 
-25. Then create the __DELETE__ function to delete data from the collections in `controller.py` using filter by id and `db.session.delete(mhs)` function
+27. Then create the __DELETE__ function to delete data from the collections in `controller.py` using filter by id and `db.session.delete(mhs)` function
 ```python
 @app.route('/delete/<int:id>')
 def delete(id):
