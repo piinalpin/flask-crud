@@ -164,6 +164,7 @@ Mahasiswa  |
 `nim (String, NOT NULL)`  |
 
 16. Stop app if that is still running, press `CTRL+C` key to quit and type `python` to go to python terminal
+
 ![Sample 4](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-5.PNG)
 
 17. Type command bellow to create database file `flaskcrud.db`
@@ -172,8 +173,86 @@ Mahasiswa  |
 >>> db.create_all()
 >>> exit()
 ```
-18. 
+18. The structure project will be look as follows
+```
+* flask-project/
+  |--- app/
+  |    |--- module/
+  |    |    |--- __init__.py
+  |    |    |--- controller.py
+  |    |    |--- models.py
+  |    |--- templates/ (html file)
+  |    |--- __init__.py
+  |    |--- flaskcrud.db
+  |--- venv/
+  |--- run.py
+```
+19. Modify `controller.py` to create function to storing data of `Mahasiswa` then save to the database that is already made and retrieving data with `Mahasiswa.query.all()` it will be retrieving all data from database then made with `try` and `except` to handling an error
+```python
+@app.route('/', methods=['GET','POST'])
+def index():
+    if request.method == 'POST':
+        name = request.form['name']
+        nim = request.form['nim']
+        try:
+            mhs = Mahasiswa(nim=nim, name=name)
+            db.session.add(mhs)
+            db.session.commit()
+        except Exception as e:
+            print("Failed to add data.")
+            print(e)
+    listMhs = Mahasiswa.query.all()
+    print(listMhs)
+    return render_template("home.html", data=enumerate(listMhs,1))
+```
 
+20. Then modify `home.html` file to show that data is already inputed on database from input form
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Crud</title>
+</head>
+<body>
+<h3>Form Add Mahasiswa</h3>
+<form action="/" method="POST">
+    <table>
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Nomor Induk Mahasiswa</td>
+            <td>:</td>
+            <td><input type="text" name="nim"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
+
+<h3>Data Mahasiswa</h3>
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>Nomor Induk Mahasiswa</th>
+        <th>Nama</th>
+    </tr>
+    {% for no, x in data %}
+        <tr>
+            <td>{{ no }}</td>
+            <td>{{ x.nim }}</td>
+            <td>{{ x.name }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+```
+21. 
 
 
 
