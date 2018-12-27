@@ -54,7 +54,7 @@ from app import app
 
 @app.route('/')
 def index():
-  return "My CRUD Flask App"
+    return "My CRUD Flask App"
 ```
 6. Create `__init__.py` inside app directory according the above structure `flask-crud/app/`
 ```python
@@ -109,12 +109,20 @@ from app import app
 
 @app.route('/')
 def index():
-  return render_template("home.html")
+    return render_template("home.html")
 ```
 
 ![Sample 2](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-2.PNG)
 
-12. 
+12. Then modify function `index()` to accept method `POST` request
+```python
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        print(request.form)
+    return render_template("home.html")
+```
+
 
 ### Installing
 
