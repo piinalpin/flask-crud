@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Crud</title>
+</head>
+<body>
+<h3>Form Update Mahasiswa</h3>
+<form action="/form-update" method="POST">
+    <table>
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td><input type="text" name="name" value="{{ data.name }}"></td>
+            <input type="hidden" name="id" value="{{ data.id }}">
+        </tr>
+        <tr>
+            <td>Nomor Induk Mahasiswa</td>
+            <td>:</td>
+            <td><input type="text" name="nim" value="{{ data.nim }}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Update</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

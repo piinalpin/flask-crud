@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Crud</title>
+</head>
+<body>
+<h3>Form Add Mahasiswa</h3>
+<form action="/" method="POST">
+    <table>
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Nomor Induk Mahasiswa</td>
+            <td>:</td>
+            <td><input type="text" name="nim"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
+
+<h3>Data Mahasiswa</h3>
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>Nomor Induk Mahasiswa</th>
+        <th>Nama</th>
+        <th>Action</th>
+    </tr>
+    {% for no, x in data %}
+        <tr>
+            <td>{{ no }}</td>
+            <td>{{ x.nim }}</td>
+            <td>{{ x.name }}</td>
+            <td><a href="form-update/{{ x.id }}">Edit</a> | <a href="delete/{{ x.id }}">Delete</a></td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
