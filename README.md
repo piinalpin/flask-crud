@@ -162,7 +162,19 @@ Mahasiswa  |
 `id (Integer, PK, Autoincrement, NOT NULL)`  |
 `name (String, NOT NULL)`  |
 `nim (String, NOT NULL)`  |
-16.
+
+16. Stop app if that is still running, press `CTRL+C` key to quit and type `python` to go to python terminal
+![Sample 4](https://raw.githubusercontent.com/piinalpin/flask-crud/master/Image-5.PNG)
+
+17. Type command bellow to create database file `flaskcrud.db`
+```
+>>> from bookmanager import db
+>>> db.create_all()
+>>> exit()
+```
+18. 
+
+
 
 
 
