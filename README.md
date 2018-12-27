@@ -363,7 +363,7 @@ def update():
 ```
 
 25. Then create the __DELETE__ function to delete data from the collections in `controller.py` using filter by id and `db.session.delete(mhs)` function
-``python
+```python
 @app.route('/delete/<int:id>')
 def delete(id):
     try:
