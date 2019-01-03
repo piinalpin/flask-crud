@@ -169,7 +169,7 @@ Mahasiswa  |
 
 17. Type command bellow to create database file `flaskcrud.db`
 ```
->>> from bookmanager import db
+>>> from app.module.models import db
 >>> db.create_all()
 >>> exit()
 ```
